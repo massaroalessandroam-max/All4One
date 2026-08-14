@@ -1,0 +1,26 @@
+:root { --ink:#14261f; --muted:#61736c; --paper:#f7f7f2; --accent:#19795c; --line:#dbe5de; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Arial, Helvetica, sans-serif; }
+a { color:inherit; text-decoration:none; }
+.landing,.page { width:min(100% - 40px, 880px); margin:0 auto; padding:72px 0; }
+.landing { min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
+.eyebrow { margin:0 0 12px; color:var(--accent); font-size:.76rem; font-weight:800; letter-spacing:.12em; }
+h1 { max-width:700px; margin:0; font-size:clamp(2.6rem,8vw,5.6rem); line-height:.96; letter-spacing:-.065em; }
+.lead { max-width:600px; color:var(--muted); font-size:1.1rem; line-height:1.55; }
+.actions { display:flex; flex-wrap:wrap; gap:12px; margin:28px 0 50px; }
+.button { display:inline-block; padding:13px 18px; border-radius:10px; background:var(--accent); color:#fff; font-weight:700; }
+.button.secondary { background:transparent; border:1px solid var(--line); color:var(--ink); }
+.principles,.cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.principles article,.card,.status { padding:20px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+.principles b,.card b,.status b { display:block; margin-bottom:8px; }
+.principles span,.card span,.status span { color:var(--muted); line-height:1.4; }
+.back { display:inline-block; margin-bottom:45px; color:var(--muted); }
+.cards { grid-template-columns:repeat(3,1fr); margin:28px 0; }
+.card { min-height:150px; display:flex; flex-direction:column; transition:transform .15s ease; }
+.card:hover { transform:translateY(-3px); border-color:var(--accent); }
+.card small { margin-top:auto; color:var(--accent); font-weight:700; }
+.notice { color:var(--muted); font-size:.9rem; }
+nav { display:flex; gap:16px; align-items:center; margin-bottom:62px; color:var(--muted); font-size:.9rem; }
+nav span { margin-right:auto; }
+.status { margin-top:35px; max-width:560px; }
+@media (max-width:640px) { .landing,.page { width:min(100% - 32px, 880px); padding:40px 0; } .principles,.cards { grid-template-columns:1fr; } nav { margin-bottom:42px; gap:10px; } }
