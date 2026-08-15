@@ -41,7 +41,8 @@ nav span { margin-right:auto; }
 .workout-create,.set-form { display:grid; grid-template-columns:1.5fr 1fr auto; gap:12px; align-items:end; }
 .set-form { grid-template-columns:1.5fr 1fr repeat(3,.7fr) auto; }
 .workout-create label,.set-form label { display:grid; gap:6px; color:var(--muted); font-size:.78rem; font-weight:700; }
-.workout-create input,.set-form input,.set-form select { width:100%; min-width:0; padding:11px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); font:inherit; }
+.workout-create input,.set-form input,.set-form select,.muscle-output { width:100%; min-width:0; padding:11px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); font:inherit; }
+.muscle-output { display:block; min-height:42px; background:var(--paper); color:var(--accent); }
 .workout-create .button,.set-form .button { border:0; cursor:pointer; font:inherit; white-space:nowrap; }
 .workout-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
 .workout-item { padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); text-align:left; cursor:pointer; }

@@ -6,7 +6,34 @@ import { supabase } from "@/lib/supabase";
 type Workout = { id: string; title: string; performed_at: string; notes: string | null };
 type WorkoutSet = { id: string; workout_id: string; exercise_name: string; muscle_group: string; set_number: number; reps: number; weight_kg: number; rpe: number | null };
 
-const muscleGroups = ["Petto", "Schiena", "Gambe", "Spalle", "Braccia", "Core", "Cardio", "Altro"];
+const exerciseCatalog = [
+  { name: "Panca piana bilanciere", muscleGroup: "Petto" },
+  { name: "Panca inclinata manubri", muscleGroup: "Petto" },
+  { name: "Chest press", muscleGroup: "Petto" },
+  { name: "Croci ai cavi", muscleGroup: "Petto" },
+  { name: "Lat machine", muscleGroup: "Schiena" },
+  { name: "Rematore bilanciere", muscleGroup: "Schiena" },
+  { name: "Rematore manubrio", muscleGroup: "Schiena" },
+  { name: "Pulley basso", muscleGroup: "Schiena" },
+  { name: "Squat bilanciere", muscleGroup: "Gambe" },
+  { name: "Leg press", muscleGroup: "Gambe" },
+  { name: "Stacco rumeno", muscleGroup: "Gambe" },
+  { name: "Leg curl", muscleGroup: "Gambe" },
+  { name: "Leg extension", muscleGroup: "Gambe" },
+  { name: "Calf raise", muscleGroup: "Gambe" },
+  { name: "Military press", muscleGroup: "Spalle" },
+  { name: "Shoulder press manubri", muscleGroup: "Spalle" },
+  { name: "Alzate laterali", muscleGroup: "Spalle" },
+  { name: "Face pull", muscleGroup: "Spalle" },
+  { name: "Curl bilanciere", muscleGroup: "Braccia" },
+  { name: "Curl manubri", muscleGroup: "Braccia" },
+  { name: "Push down cavi", muscleGroup: "Braccia" },
+  { name: "French press", muscleGroup: "Braccia" },
+  { name: "Crunch", muscleGroup: "Core" },
+  { name: "Plank", muscleGroup: "Core" },
+  { name: "Corsa", muscleGroup: "Cardio" },
+  { name: "Cyclette", muscleGroup: "Cardio" },
+] as const;
 const today = new Date().toISOString().slice(0, 10);
 
 export function WorkoutJournal() {
@@ -15,8 +42,7 @@ export function WorkoutJournal() {
   const [activeWorkoutId, setActiveWorkoutId] = useState<string | null>(null);
   const [title, setTitle] = useState("Allenamento");
   const [date, setDate] = useState(today);
-  const [exercise, setExercise] = useState("");
-  const [muscleGroup, setMuscleGroup] = useState("Gambe");
+  const [exercise, setExercise] = useState<string>(exerciseCatalog[0].name);
   const [reps, setReps] = useState("8");
   const [weight, setWeight] = useState("0");
   const [rpe, setRpe] = useState("");
@@ -25,6 +51,7 @@ export function WorkoutJournal() {
 
   const activeWorkout = workouts.find((workout) => workout.id === activeWorkoutId) ?? null;
   const activeSets = sets.filter((set) => set.workout_id === activeWorkoutId);
+  const selectedExercise = exerciseCatalog.find((item) => item.name === exercise) ?? exerciseCatalog[0];
 
   async function loadJournal() {
     if (!supabase) return;
@@ -72,7 +99,7 @@ export function WorkoutJournal() {
     const { data, error } = await supabase.from("workout_sets").insert({
       workout_id: activeWorkoutId,
       exercise_name: exercise.trim(),
-      muscle_group: muscleGroup,
+      muscle_group: selectedExercise.muscleGroup,
       set_number: sameExerciseSets.length + 1,
       reps: Number(reps),
       weight_kg: Number(weight),
@@ -115,8 +142,8 @@ export function WorkoutJournal() {
     {activeWorkout && <section className="journal-panel">
       <div className="section-heading"><div><p className="eyebrow">SESSIONE ATTIVA</p><h2>{activeWorkout.title}</h2></div><span className="metric">{activeSets.length} serie</span></div>
       <form className="set-form" onSubmit={addSet}>
-        <label>Esercizio<input required placeholder="Es. Squat bilanciere" value={exercise} onChange={(event) => setExercise(event.target.value)} /></label>
-        <label>Gruppo muscolare<select value={muscleGroup} onChange={(event) => setMuscleGroup(event.target.value)}>{muscleGroups.map((group) => <option key={group}>{group}</option>)}</select></label>
+        <label>Esercizio<select value={exercise} onChange={(event) => setExercise(event.target.value)}>{[...new Set(exerciseCatalog.map((item) => item.muscleGroup))].map((group) => <optgroup key={group} label={group}>{exerciseCatalog.filter((item) => item.muscleGroup === group).map((item) => <option key={item.name}>{item.name}</option>)}</optgroup>)}</select></label>
+        <label>Gruppo muscolare<output className="muscle-output">{selectedExercise.muscleGroup}</output></label>
         <label>Ripetizioni<input required min="1" type="number" value={reps} onChange={(event) => setReps(event.target.value)} /></label>
         <label>Carico kg<input required min="0" step="0.5" type="number" value={weight} onChange={(event) => setWeight(event.target.value)} /></label>
         <label>RPE (facoltativo)<input min="1" max="10" step="0.5" type="number" value={rpe} onChange={(event) => setRpe(event.target.value)} /></label>
