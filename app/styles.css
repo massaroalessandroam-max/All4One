@@ -20,6 +20,15 @@ h1 { max-width:700px; margin:0; font-size:clamp(2.6rem,8vw,5.6rem); line-height:
 .card:hover { transform:translateY(-3px); border-color:var(--accent); }
 .card small { margin-top:auto; color:var(--accent); font-weight:700; }
 .notice { color:var(--muted); font-size:.9rem; }
+.auth-page { max-width:560px; }
+.auth-form { display:grid; gap:16px; margin:30px 0 14px; }
+.auth-form label { display:grid; gap:7px; font-size:.9rem; font-weight:700; }
+.auth-form input { width:100%; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); padding:13px; font:inherit; }
+.auth-form input:focus { outline:2px solid #8bd5bf; border-color:var(--accent); }
+.auth-form .button { border:0; cursor:pointer; font:inherit; }
+.auth-form .button:disabled { cursor:wait; opacity:.65; }
+.text-button,.sign-out { padding:0; border:0; background:none; color:var(--accent); cursor:pointer; font:inherit; font-weight:700; }
+.sign-out { display:block; width:min(100% - 40px, 880px); margin:-35px auto 45px; text-align:left; }
 nav { display:flex; gap:16px; align-items:center; margin-bottom:62px; color:var(--muted); font-size:.9rem; }
 nav span { margin-right:auto; }
 .status { margin-top:35px; max-width:560px; }

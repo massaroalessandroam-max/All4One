@@ -1,9 +1,5 @@
-import Link from "next/link";
+import { AreaHeader, ProtectedArea } from "@/components/protected-area";
 
 export default function ClientDashboard() {
-  return <Dashboard role="Cliente" title="Il tuo percorso" description="Qui arriveranno diario pasti, allenamenti, progressi, report e consensi." next="Task 02: registrazione pasti e allenamenti." />;
-}
-
-function Dashboard({ role, title, description, next }: { role: string; title: string; description: string; next: string }) {
-  return <main className="page"><nav><Link href="/">All4One</Link><span>{role}</span><Link href="/accedi">Cambia ruolo</Link></nav><p className="eyebrow">AREA {role.toUpperCase()}</p><h1>{title}</h1><p className="lead">{description}</p><section className="status"><b>Fondazioni attive</b><span>{next}</span></section></main>;
+  return <ProtectedArea role="cliente"><main className="page"><AreaHeader role="cliente" /><p className="eyebrow">AREA CLIENTE</p><h1>Il tuo percorso</h1><p className="lead">Qui arriveranno diario pasti, allenamenti, progressi, report e consensi.</p><section className="status"><b>Fondazioni attive</b><span>Task 02: registrazione pasti e allenamenti.</span></section></main></ProtectedArea>;
 }

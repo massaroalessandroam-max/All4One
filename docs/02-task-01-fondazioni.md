@@ -23,9 +23,9 @@ Questa scelta mantiene il primo rilascio semplice: un solo progetto web, nessuna
 | 01.1 | Inizializzare progetto Next.js/TypeScript | Completato: il progetto compila e mostra una pagina All4One. |
 | 01.2 | Definire configurazione ambiente | Completato: chiavi e URL restano in variabili locali non versionate; esiste `.env.example`. |
 | 01.3 | Creare schema dati iniziale | Predisposto: migrazione SQL con utenti, profili, ruoli, relazione cliente–PT–nutrizionista, contatti e consensi. |
-| 01.4 | Abilitare autenticazione | Un utente può registrarsi, accedere e uscire. |
-| 01.5 | Applicare autorizzazioni | Cliente, PT e nutrizionista non possono leggere dati non propri/non autorizzati. |
-| 01.6 | Creare pagine protette vuote | Ogni ruolo raggiunge la propria dashboard dopo l'accesso. |
+| 01.4 | Abilitare autenticazione | Implementato: un cliente può registrarsi, accedere e uscire dopo l'applicazione della migrazione `202608150001_auth_profiles.sql`. |
+| 01.5 | Applicare autorizzazioni | Implementato: le aree applicative controllano il ruolo; il database impedisce l'auto-promozione del ruolo. |
+| 01.6 | Creare pagine protette vuote | Implementato: ogni ruolo raggiunge soltanto la propria dashboard dopo l'accesso. |
 | 01.7 | Verificare sicurezza minima | Le chiavi segrete non arrivano nel browser; controlli automatici base superati. |
 
 ## Modello dati minimo
