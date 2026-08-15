@@ -53,3 +53,11 @@ auth.users
 - Invio automatico di WhatsApp/email.
 - Diario pasti, diario allenamenti, schede e chat interna: iniziano dal Task 02.
 - PWA, pubblicazione sugli store e pagamenti.
+
+## Task 02.1 — Diario allenamenti
+
+**Stato:** implementato, in attesa della migrazione `202608150002_workouts.sql` su Supabase.
+
+- Il cliente crea una sessione e registra esercizio, gruppo muscolare, serie, ripetizioni, carico e RPE.
+- L'app calcola volume e serie per gruppo muscolare della sessione.
+- L'app mostra record personali per esercizio: carico, ripetizioni e volume massimo della serie.

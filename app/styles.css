@@ -32,4 +32,30 @@ h1 { max-width:700px; margin:0; font-size:clamp(2.6rem,8vw,5.6rem); line-height:
 nav { display:flex; gap:16px; align-items:center; margin-bottom:62px; color:var(--muted); font-size:.9rem; }
 nav span { margin-right:auto; }
 .status { margin-top:35px; max-width:560px; }
-@media (max-width:640px) { .landing,.page { width:min(100% - 32px, 880px); padding:40px 0; } .principles,.cards { grid-template-columns:1fr; } nav { margin-bottom:42px; gap:10px; } }
+.client-page { max-width:1040px; }
+.journal { display:grid; gap:22px; margin:38px 0 70px; }
+.journal-panel { padding:24px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+.section-heading { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; margin-bottom:20px; }
+.section-heading h2 { margin:0; font-size:1.45rem; letter-spacing:-.035em; }
+.metric { padding:7px 10px; border-radius:99px; background:#e7f4ed; color:var(--accent); font-size:.8rem; font-weight:700; white-space:nowrap; }
+.workout-create,.set-form { display:grid; grid-template-columns:1.5fr 1fr auto; gap:12px; align-items:end; }
+.set-form { grid-template-columns:1.5fr 1fr repeat(3,.7fr) auto; }
+.workout-create label,.set-form label { display:grid; gap:6px; color:var(--muted); font-size:.78rem; font-weight:700; }
+.workout-create input,.set-form input,.set-form select { width:100%; min-width:0; padding:11px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); font:inherit; }
+.workout-create .button,.set-form .button { border:0; cursor:pointer; font:inherit; white-space:nowrap; }
+.workout-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.workout-item { padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); text-align:left; cursor:pointer; }
+.workout-item.active { border-color:var(--accent); background:#e7f4ed; }
+.workout-item b,.workout-item span { display:block; }
+.workout-item span,.muted { color:var(--muted); font-size:.82rem; }
+.set-table { overflow:auto; margin-top:22px; border-top:1px solid var(--line); }
+.set-row { min-width:500px; display:grid; grid-template-columns:2fr repeat(4,.6fr); gap:10px; align-items:center; padding:11px 6px; border-bottom:1px solid var(--line); font-size:.9rem; }
+.set-row b small { display:block; color:var(--muted); font-weight:400; }
+.table-head { color:var(--muted); font-size:.75rem; font-weight:700; text-transform:uppercase; }
+.summary { display:flex; flex-wrap:wrap; gap:9px 18px; margin-top:18px; padding:15px; border-radius:10px; background:var(--paper); font-size:.9rem; }
+.summary b { width:100%; }
+.record-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.record-grid article { padding:14px; border-radius:10px; background:var(--paper); }
+.record-grid b,.record-grid span { display:block; }
+.record-grid span { margin-top:5px; color:var(--muted); font-size:.83rem; }
+@media (max-width:760px) { .landing,.page { width:min(100% - 32px, 880px); padding:40px 0; } .principles,.cards,.record-grid { grid-template-columns:1fr; } nav { margin-bottom:42px; gap:10px; } .workout-create,.set-form { grid-template-columns:1fr 1fr; } .workout-create .button,.set-form .button { grid-column:1 / -1; } }
